@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    {% if post_list %}
+      {% for post in post_list %}
+        <a href="">{{ post.title }}</a>
+      {% endfor %}
+    {% else %}
+      <p>Post's list is empty</p>
+    {% endif %}
+  </div>
+{% endblock %}

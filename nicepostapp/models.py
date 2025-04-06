@@ -18,3 +18,10 @@ class Imgs(models.Model):
 class Videos(models.Model):
     video = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='video')
     post_video = models.FileField(upload_to='videos/', blank=True)
+
+class Comments(models.Model):
+    comment = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comment')
+    comment_text = models.CharField(max_length=300)
+    created_at = models.DateTimeField(default=timezone.now)
+    # author = models.CharField()
+    
