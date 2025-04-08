@@ -16,26 +16,40 @@
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <h1>NicePOST</h1>
-        <nav>
-          <input type="search" />
-          <ul>
-            <li>
-              <a href="">create</a>
-            </li>
-            <li>
-              <a href="">profile</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    {% block navbar %}
+      <header>
+        <div class="container">
+          <nav>
+            <h2>NicePOST</h2>
+            <input type="text" placeholder="Search in NicePOST" />
+            <ul>
+              <li>
+                <a href="">create</a>
+              </li>
+              <li>
+                <a href="">sign up</a>
+              </li>
+              <li>
+                <a href="">log in</a>
+              </li>
+              <li>
+                <a href="">profil</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    {% endblock %}
+
     <main>
       {% block content %}
 
       {% endblock %}
     </main>
+    <footer>
+      {% block footer %}
+
+      {% endblock %}
+    </footer>
   </body>
 </html>
