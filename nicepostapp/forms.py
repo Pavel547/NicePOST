@@ -1,18 +1,22 @@
 from django import forms
+from . import models
 
-from .models import Post, Imgs, Videos
-
-class PostCreationForm(forms.ModelForm):
+class PostForm(forms.ModelForm):
     class Meta:
-        model = Post
-        fields = ['title', 'content', ]
+        model = models.Post
+        fields = ["title", "content"]
         
-class ImgsForm(forms.ModelForm):
+class ImgForm(forms.ModelForm):
     class Meta:
-        model = Imgs
-        fields = ['post_imgs']
+        model = models.Imgs
+        fields = ["post_imgs"]
         
 class VideoForm(forms.ModelForm):
     class Meta:
-        model = Videos
-        fields = ['post_video']
+        model = models.Videos
+        fields = ["post_video"]
+        
+class CommentsForm(forms.ModelForm):
+    class Meta:
+        model = models.Comments
+        fields = ["comment_text"]
