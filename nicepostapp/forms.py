@@ -11,12 +11,12 @@ class ImgForm(forms.ModelForm):
         model = models.Imgs
         fields = ["post_imgs"]
         
-class VideoForm(forms.ModelForm):
+class GIFForm(forms.ModelForm):
     class Meta:
-        model = models.Videos
-        fields = ["post_video"]
+        model = models.GIF
+        fields = ["post_gif"]
         
-class CommentsForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
         model = models.Comments
         fields = ["comment_text"]

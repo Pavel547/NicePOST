@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Post, Imgs, Videos
+from . import models
 
-admin.site.register(Post)
-admin.site.register(Imgs)
-admin.site.register(Videos)
+admin.site.register(models.Post)
+admin.site.register(models.Comments)
+admin.site.register(models.Imgs)
+admin.site.register(models.GIF)

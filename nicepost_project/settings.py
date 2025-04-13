@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'nicepostapp.apps.NicepostappConfig',
-    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +89,10 @@ ROOT_URLCONF = 'nicepost_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates', BASE_DIR / 'templates' / 'nicepostapp' ],
+        'DIRS': [ 
+            BASE_DIR / 'templates', 
+            BASE_DIR / 'templates' / 'nicepostapp',
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
