@@ -10,36 +10,30 @@
       {% endblock %}
     </title>
     {% comment %}Bootstrap styles{% endcomment %}
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
     {% comment %}Css styles{% endcomment %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
   </head>
 
   <body>
-    {% block navbar %}
-      <header>
+    <header>
+      <nav class="navbar navbar-expand-lg nav">
         <div class="container">
-          <nav>
-            <h2>NicePOST</h2>
-            <input type="text" placeholder="Search in NicePOST" />
-            <ul>
-              <li>
-                <a href="{% url 'nicepost:create_post' %}">create</a>
+          <a href="{% url 'nicepost:home' %}" class="navbar-brand">NicePOST</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'nicepost:home' %}">Home</a>
               </li>
-              <li>
-                <a href="">sign up</a>
-              </li>
-              <li>
-                <a href="">log in</a>
-              </li>
-              <li>
-                <a href="">profil</a>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'nicepost:create_post' %}">Create</a>
               </li>
             </ul>
-          </nav>
+          </div>
         </div>
-      </header>
-    {% endblock %}
+      </nav>
+    </header>
 
     <main>
       {% block content %}

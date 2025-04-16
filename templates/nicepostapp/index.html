@@ -5,13 +5,25 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container">
-    {% if post_list %}
-      {% for post in post_list %}
-        <a href="{% url 'nicepost:post_details' post.id %}">{{ post.title }}</a>
-      {% endfor %}
-    {% else %}
-      <p>Post's list is empty</p>
-    {% endif %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-xxl-12">
+        {% for post in post_list %}
+          <a href="{% url 'nicepost:post_details' post.id %}">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title }}</h5>
+                {% if post.content %}
+                  <p class="card-text">{{ post.content|truncatewords:50 }}...</p>
+                {% endif %}
+              </div>
+              {% for imgs in post.imgs.all %}
+                <img src="{{ imgs.post_imgs.url }}" alt="{{ post.title }} imgs" class="card-img" />
+              {% endfor %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 {% endblock %}

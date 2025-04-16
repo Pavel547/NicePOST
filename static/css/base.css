@@ -1,0 +1,44 @@
+:root {
+    --primary-light-color: #fafafa;
+    --primary-dark-color: #000;
+    --hover-color: #576f7625;
+    --brand-color: #ff4500;
+
+}
+
+/* Base */
+body {
+    background-color: var(--primary-light-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Navbar */
+.navbar-brand {
+    color: var(--brand-color);
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.nav-link {
+    color: var(--primary-dark-color);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Card */
+.card {
+    max-width: 600px;
+    height: auto;
+}
+
+.card :hover {
+    background-color: var(--hover-color);
+}
+
+.card-text {
+    font-size: 15px;
+    color: var(--primary-dark-color);
+}

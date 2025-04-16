@@ -3,31 +3,33 @@ from django.shortcuts import render, redirect, get_object_or_404
 from . import models
 from .forms import PostForm, CommentForm, ImgForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 def home_view(request):
     posts = models.Post.objects.all()
     template = "index.html"
     return render(request, template, {'post_list': posts})
 
+@login_required
 def post_details_view(request, pk):
     post = get_object_or_404(models.Post, pk=pk)
-    template = "posts/post_detail.html"
+    template = 'posts/post_detail.html'
     if request.method == "POST":
         comment = CommentForm(request.POST)
         if comment.is_valid():
             newcomment = comment.save(commit=False)
             newcomment.post = post
-            newcomment.user = request.user
             newcomment.save()
     else:
         comment = CommentForm()
+        
     context = {
         "post": post,
         "comment": comment,
-    }    
-        
+    }
     return render(request, template, context)
 
+@login_required
 def createpost_view(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -41,9 +43,13 @@ def createpost_view(request):
             postimg.imgs = post
             postimg.save()
    
-            return redirect('nicepost:home')
+            return redirect("nicepost:home")
     else:
         form = PostForm()
         img = ImgForm()
-
-    return render(request, "posts/post_form.html", {'postform': form, 'imgform': img,})
+    
+    context = {
+        "postform": form,
+        "imgform": img,
+    }
+    return render(request, "posts/post_form.html", context)
