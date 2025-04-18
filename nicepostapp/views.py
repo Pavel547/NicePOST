@@ -10,7 +10,6 @@ def home_view(request):
     template = "index.html"
     return render(request, template, {'post_list': posts})
 
-@login_required
 def post_details_view(request, pk):
     post = get_object_or_404(models.Post, pk=pk)
     template = 'posts/post_detail.html'

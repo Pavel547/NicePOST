@@ -23,12 +23,24 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'nicepost:home' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'nicepost:create_post' %}">Create</a>
-              </li>
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'nicepost:home' %}"><span class="link">Home</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'nicepost:create_post' %}"><span class="link">Create</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'account_logout' %}"><span class="link">Log out</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><span class="link">Profile</span></a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a href="{% url 'account_login' %}" class="nav-link"><span>Log In</span></a>
+                </li>
+              {% endif %}
             </ul>
           </div>
         </div>

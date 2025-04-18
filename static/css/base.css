@@ -1,7 +1,7 @@
 :root {
     --primary-light-color: #fafafa;
     --primary-dark-color: #000;
-    --hover-color: #576f7625;
+    --hover-color: #44585e25;
     --brand-color: #ff4500;
 
 }
@@ -13,6 +13,11 @@ body {
 
 a {
     text-decoration: none;
+    color: var(--primary-dark-color);
+}
+
+link {
+    background-color: var(--hover-color);
 }
 
 /* Navbar */
@@ -28,7 +33,7 @@ a {
     font-size: 15px;
 }
 
-/* Card */
+/* Posts Cards */
 .card {
     max-width: 600px;
     height: auto;
@@ -41,4 +46,20 @@ a {
 .card-text {
     font-size: 15px;
     color: var(--primary-dark-color);
+    background-color: transparent!important;
+}
+
+.card-title {
+    background-color: transparent!important;
+}
+
+.card-img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Post details */
+
+.author {
+    font-size: 15px;
 }

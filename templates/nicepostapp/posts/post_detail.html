@@ -8,23 +8,28 @@
 {% block content %}
   <section>
     <div class="container mt-4">
-      <p>Author: {{ request.user.username }}</p>
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.content }}</p>
+      <p class="author">Author: {{ request.user.username }}</p>
+      <h1 class="title">{{ post.title }}</h1>
+      <p class="content">{{ post.content }}</p>
       {% for imgs in post.imgs.all %}
         <img src="{{ imgs.post_imgs.url }}" alt="{{ post.title }} imgs" />
       {% endfor %}
-      <form method="post" class="mt-4">
-        {% csrf_token %}
-        {{ comment.as_p }}
-        <button type="submit">Comment</button>
-      </form>
+      {% if user.is_authenticated %}
+        <form method="post" class="mt-4">
+          {% csrf_token %}
+          {{ comment.as_p }}
+          <button type="submit">Comment</button>
+        </form>
+      {% else %}
+        <p>To comment post's login please</p>
+        <span><a href="{% url 'account_login' %}">Login</a></span>
+      {% endif %}
     </div>
   </section>
   <section class="container mt-4">
     <h2>Comments:</h2>
     {% for comment in post.comments.all %}
-      <div class="">
+      <div class="container">
         <small><a href="">{{ comment.author }}</a> | {{ post.created_on }}</small>
         <h6>{{ comment.comment_text }}</h6>
       </div>
