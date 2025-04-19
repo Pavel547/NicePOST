@@ -8,7 +8,7 @@
 {% block content %}
   <section>
     <div class="container mt-4">
-      <p class="author">Author: {{ request.user.username }}</p>
+      <p class="author">Author: {{ post.author }}</p>
       <h1 class="title">{{ post.title }}</h1>
       <p class="content">{{ post.content }}</p>
       {% for imgs in post.imgs.all %}
