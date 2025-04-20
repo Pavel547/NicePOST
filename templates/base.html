@@ -24,11 +24,15 @@
           <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ms-auto">
               {% if user.is_authenticated %}
+                <form method="get">
+                  <input type="search" placeholder="Search the post" />
+                  <button type="submit">Search</button>
+                </form>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'nicepost:home' %}"><span class="link">Home</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'nicepost:create_post' %}"><span class="link">Create</span></a>
+                  <a class="nav-link" href="{% url 'nicepost:add_post' %}"><span class="link">Create</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'account_logout' %}"><span class="link">Log out</span></a>

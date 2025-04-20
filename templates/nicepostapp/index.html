@@ -14,11 +14,13 @@
               <div class="card-body">
                 <h5 class="card-title">{{ post.title }}</h5>
                 {% if post.content %}
-                  <p class="card-text">{{ post.content|truncatewords:50 }}...</p>
+                  <p class="card-text">{{ post.content|truncatewords_html:30 }}</p>
                 {% endif %}
               </div>
               {% for imgs in post.imgs.all %}
-                <img class="card-img" src="{{ imgs.post_imgs.url }}" alt="{{ post.title }} imgs" class="card-img" />
+                {% if imgs.post_imgs %}
+                  <img class="card-img" src="{{ imgs.post_imgs.url }}" alt="{{ post.title }} imgs" class="card-img" />
+                {% endif %}
               {% endfor %}
             </a>
           </div>

@@ -29,13 +29,13 @@ def post_details_view(request, pk):
     return render(request, template, context)
 
 @login_required
-def createpost_view(request):
+def addpost_view(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         img = ImgForm(request.POST, request.FILES)
         if form.is_valid() and img.is_valid():
             post = form.save(commit=False)
-            post.user = request.user
+            post.author = request.user
             post.save()
 
             postimg = img.save(commit=False)

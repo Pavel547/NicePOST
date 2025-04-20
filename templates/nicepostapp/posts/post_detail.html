@@ -12,7 +12,9 @@
       <h1 class="title">{{ post.title }}</h1>
       <p class="content">{{ post.content }}</p>
       {% for imgs in post.imgs.all %}
-        <img src="{{ imgs.post_imgs.url }}" alt="{{ post.title }} imgs" />
+        {% if imgs.post_img %}
+          <img src="{{ imgs.post_imgs.url }}" alt="{{ post.title }} imgs" />
+        {% endif %}
       {% endfor %}
       {% if user.is_authenticated %}
         <form method="post" class="mt-4">
