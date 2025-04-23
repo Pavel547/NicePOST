@@ -9,6 +9,8 @@
   <section>
     <div class="container mt-4">
       <p class="author">Author: {{ post.author }}</p>
+      <a href="{% url 'nicepost:edit_post' pk=post.id %}">edit</a>
+      <a href="{% url 'nicepost:delet_post' pk=post.id %}">delet</a>
       <h1 class="title">{{ post.title }}</h1>
       <p class="content">{{ post.content }}</p>
       {% for imgs in post.imgs.all %}
