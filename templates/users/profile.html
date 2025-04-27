@@ -1,17 +1,14 @@
+{% extends 'base.html' %}
 {% load static %}
-
 {% block title %}
-  Edit post
+  {{ user.username }} profile
 {% endblock %}
 
 {% block content %}
   <section>
     <div class="container mt-5">
-      <form method="post">
-        {% csrf_token %}
-        {{ editform.as_p }}
-        <button type="submit">Edit</button>
-      </form>
+      <img src="{{ user.profile.profile_img.url }}" alt="" />
+      <h3>{{ user.username }}</h3>
     </div>
   </section>
 {% endblock %}

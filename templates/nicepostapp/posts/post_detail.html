@@ -14,7 +14,7 @@
       <h1 class="title">{{ post.title }}</h1>
       <p class="content">{{ post.content }}</p>
       {% for imgs in post.imgs.all %}
-        {% if imgs.post_img %}
+        {% if imgs.post_imgs %}
           <img src="{{ imgs.post_imgs.url }}" alt="{{ post.title }} imgs" />
         {% endif %}
       {% endfor %}
@@ -34,7 +34,7 @@
     <h2>Comments:</h2>
     {% for comment in post.comments.all %}
       <div class="container">
-        <small><a href="">{{ comment.author }}</a> | {{ post.created_on }}</small>
+        <small><a href="">{{ comment.author }}</a> | {{ comment.created_on }}</small>
         <h6>{{ comment.comment_text }}</h6>
       </div>
     {% endfor %}
