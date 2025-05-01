@@ -13,19 +13,12 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-class Imgs(models.Model):
-    imgs = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="imgs")
-    post_imgs = models.ImageField(upload_to="imgs/", blank=True)
-
+class ImgOrVideo(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="post_files")
+    files = models.FileField(upload_to="post_files/", blank=True)
+    
     def __str__(self):
-        return f"Img for {self.imgs.title}"
-
-class GIF(models.Model):
-    gif = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="gif")
-    post_gif = models.FileField(upload_to='gifs/', blank=True)
-
-    def __str__(self):
-        return f"{self.gif.title} GIF"
+        return f"{self.post.title} file"
 
 class Comments(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")

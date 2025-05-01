@@ -15,15 +15,10 @@ class PostForm(forms.ModelForm):
             raise ValidationError("Minimum 5 characters required")
         return data
         
-class ImgForm(forms.ModelForm):
+class ImgOrVideoForm(forms.ModelForm):
     class Meta:
-        model = models.Imgs
-        fields = ["post_imgs"]
-        
-class GIFForm(forms.ModelForm):
-    class Meta:
-        model = models.GIF
-        fields = ["post_gif"]
+        model = models.ImgOrVideo
+        fields = ["files"]
         
 class CommentForm(forms.ModelForm):
     class Meta:

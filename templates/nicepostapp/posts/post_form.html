@@ -10,7 +10,7 @@
     <form action="{% url 'nicepost:create_post' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ postform.as_p }}
-      {{ imgform.as_p }}
+      {{ fileform.as_p }}
       <input type="submit" />
     </form>
   </div>

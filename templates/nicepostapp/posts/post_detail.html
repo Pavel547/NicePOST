@@ -13,9 +13,9 @@
       <a href="{% url 'nicepost:delet_post' pk=post.id %}">delet</a>
       <h1 class="title">{{ post.title }}</h1>
       <p class="content">{{ post.content }}</p>
-      {% for imgs in post.imgs.all %}
-        {% if imgs.post_imgs %}
-          <img src="{{ imgs.post_imgs.url }}" alt="{{ post.title }} imgs" />
+      {% for post_files in post.post_files.all %}
+        {% if post_files.files %}
+          <img src="{{ post_files.files.url }}" alt="{{ post.title }} imgs" />
         {% endif %}
       {% endfor %}
       {% if user.is_authenticated %}

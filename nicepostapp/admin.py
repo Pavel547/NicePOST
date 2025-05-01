@@ -17,14 +17,6 @@ class CommentsAdmin(admin.ModelAdmin):
     ]
     list_display = ["comment_text", "author", "created_on"]
 
-class ImgsAdmin(admin.ModelAdmin):
-    fieldsets = [
-        ("Choice post", {"fields": ["imgs"]}),
-        ("Adding an image", {"fields": ["post_imgs"]}),
-    ]
-    list_display = ["imgs", "post_imgs"]
-
 admin.site.register(models.Post, PostAdmin)
 admin.site.register(models.Comments, CommentsAdmin)
-admin.site.register(models.Imgs, ImgsAdmin)
-admin.site.register(models.GIF)
+admin.site.register(models.ImgOrVideo)

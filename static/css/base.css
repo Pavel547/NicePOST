@@ -63,3 +63,21 @@ link {
 .author {
     font-size: 15px;
 }
+
+.img {
+    max-width: 250px;
+    height: auto;
+}
+
+/* Profile style */
+
+.profile-img {
+    max-width: 250px;
+    height: auto;
+
+}
+
+.img-background {
+    background-color: var(--hover-color);
+    border-radius: 50%;
+}

@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}
-  {{ user.username }} profile
-{% endblock %}
 
+{% block title %}
+  {{ user.username }} Profile
+{% endblock %}
 {% block content %}
   <section>
     <div class="container mt-5">
-      <img src="{{ user.profile.profile_img.url }}" alt="" />
-      <h3>{{ user.username }}</h3>
+      <img src="{{ user.profile.profile_img.url }}" alt="{{ user.username }} profile picture" class="profile-img img-background" />
+      <h2>{{ user.username }}</h2>
     </div>
   </section>
 {% endblock %}

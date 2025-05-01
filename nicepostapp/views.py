@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 from . import models
 from django.contrib.auth.models import User
-from .forms import PostForm, CommentForm, ImgForm
+from .forms import PostForm, CommentForm, ImgOrVideoForm
 from django.contrib.auth.decorators import login_required
 
 def home_view(request):
@@ -32,24 +32,24 @@ def post_details_view(request, pk):
 def create_post_view(request):
     if request.method == "POST":
         form = PostForm(request.POST)
-        img = ImgForm(request.POST, request.FILES)
-        if form.is_valid() and img.is_valid():
+        file = ImgOrVideoForm(request.POST, request.FILES)
+        if form.is_valid() and file.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.save()
 
-            postimg = img.save(commit=False)
-            postimg.imgs = post
-            postimg.save()
+            postfile = file.save(commit=False)
+            postfile.file = post
+            postfile.save()
    
             return redirect("nicepost:home")
     else:
         form = PostForm()
-        img = ImgForm()
+        file = ImgOrVideoForm()
     
     context = {
         "postform": form,
-        "imgform": img,
+        "fileform": file,
     }
     return render(request, "posts/post_form.html", context)
 
